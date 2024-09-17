@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa de Aniversário</title>
+    <style>
+        body {
+            background-color: #f7e6f2; /* Tom de rosa suave */
+            color: #6a0dad; /* Roxo escuro */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 36px;
+            color: #b565c3; /* Tom de roxo suave */
+        }
+
+        .slider {
+            position: relative;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: #b565c3;
+            padding: 10px;
+            user-select: none;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .caption {
+            font-size: 18px;
+            margin-top: 15px;
+            color: #6a0dad;
+        }
+    </style>
+</head>
+<body>
+    <h1>Feliz Aniversário de Namoro!</h1>
+    
+    <div class="slider">
+        <div class="slides">
+            <img src="1.jpg" id="slide" alt="Foto nossa">
+            <div class="caption" id="caption">Mensagem romântica aqui</div>
+        </div>
+
+        <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+        <span class="next" onclick="changeSlide(1)">&#10095;</span>
+    </div>
+
+    <script>
+        const slides = [
+            { image: '1.jpg', text: '29/09/22 inicio da melhor parte das nossas vidas.' },
+            { image: '2.jpg', text: '1 ano com a melhor pessoa da minha vida.' },
+            { image: '3.jpg', text: 'O vínculo mais forte e duradouro que conheci.' },
+            { image: '4.jpg', text: 'Por mais que você tenha suas dúvidas, pra mim a trajetória será inacabável.' },
+            { image: '5.jpg', text: 'Amigos > namorados > ...?' },
+            { image: '6.jpg', text: 'When the night has come, and the land is dark.' },
+            { image: '7.jpg', text: 'And the moon is the only light we\'ll see.' },
+            { image: '8.jpg', text: 'No, I won\'t be afraid, Oh, I won\'t be afraid.' },
+            { image: '9.jpg', text: 'Just as long as you stand, stand by me.' },
+            { image: '10.jpg', text: 'So darling, darling, stand by me, oh stand by me.' }
+        ];
+
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slide = slides[index];
+            document.getElementById('slide').src = slide.image;
+            document.getElementById('caption').innerText = slide.text;
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            } else if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+            showSlide(currentSlide);
+        }
+
+        // Exibir o primeiro slide
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
